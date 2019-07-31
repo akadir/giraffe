@@ -15,20 +15,18 @@ import java.io.IOException;
 public class Giraffe {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         Giraffe giraffe = new Giraffe();
         giraffe.start();
     }
 
-    private void start() throws InterruptedException {
+    private void start() {
         try {
             Exporter exporter = new Exporter();
             exporter.authenticate();
             exporter.run();
         } catch (IOException | TwitterException e) {
             logger.error(e.getMessage());
-        } catch (InterruptedException e) {
-            throw e;
         }
     }
 

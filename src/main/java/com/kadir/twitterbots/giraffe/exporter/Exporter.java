@@ -10,12 +10,7 @@ import com.kadir.twitterbots.ratelimithandler.handler.RateLimitHandler;
 import com.kadir.twitterbots.ratelimithandler.process.ApiProcessType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import twitter4j.PagableResponseList;
-import twitter4j.ResponseList;
-import twitter4j.Twitter;
-import twitter4j.TwitterException;
-import twitter4j.User;
-import twitter4j.UserList;
+import twitter4j.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -39,12 +34,12 @@ public class Exporter {
         twitter = BotAuthenticator.authenticate(GiraffeConstants.PROPERTIES_FILE_NAME, GiraffeConstants.API_KEYS_PREFIX);
     }
 
-    public void run() throws InterruptedException, IOException, TwitterException {
+    public void run() throws IOException, TwitterException {
         logger.info("export starting");
         exportLists();
     }
 
-    private void exportLists() throws TwitterException, IOException, InterruptedException {
+    private void exportLists() throws TwitterException, IOException {
         ResponseList<UserList> userLists = twitter.getUserLists(twitter.getId());
 
         if (!userLists.isEmpty()) {
@@ -68,7 +63,7 @@ public class Exporter {
         }
     }
 
-    private List<User> getListMembers(UserList userList) throws TwitterException, InterruptedException {
+    private List<User> getListMembers(UserList userList) throws TwitterException {
         PagableResponseList<User> members = null;
         List<User> listMembers = new ArrayList<>();
 
