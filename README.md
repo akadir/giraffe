@@ -1,5 +1,6 @@
 # giraffe
 
+[![Build Status](https://travis-ci.org/akadir/giraffe.svg?branch=master)](https://travis-ci.org/akadir/giraffe)
 [![gradle-version](https://img.shields.io/badge/gradle-5.5.1-brightgreen)](https://img.shields.io/badge/gradle-5.5.1-brightgreen)
 
 Export twitter lists from twitter account to json formatted file. 
